@@ -1,0 +1,8 @@
+Options +FollowSymLinks
+RewriteEngine On
+RewriteRule ^Public/Js/(.*)$ Public/Js/$1 [L]
+RewriteRule ^Public/Style/(.*)$ Public/Style/$1 [L]
+RewriteRule ^Public/Images/(.*)$ Public/Images/$1 [L]
+RewriteRule ^Public/Plyr/(.*)$ Public/Plyr/$1 [L]
+RewriteRule ^(.*)$ index.php [NC,L]
+AddDefaultCharset utf-8
