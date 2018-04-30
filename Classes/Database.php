@@ -817,7 +817,6 @@ Class DB_C{
 
             array_push ($Array, $post);
 
-
         }
 
 
