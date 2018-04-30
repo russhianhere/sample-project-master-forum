@@ -2,8 +2,8 @@
 
 Class User{
 
-    
-    
+
+
     public static function Login(array $User){
 
 
@@ -11,7 +11,7 @@ Class User{
 
         $_SESSION['id'] = $User['id'];
         $_SESSION['logged_in'] = 1;
-        
+
     }
 
     public static function GetByID($id){
@@ -34,7 +34,7 @@ Class User{
         if($class != 0) {
 
             return $class;
-            
+
         }
 
     }
@@ -71,7 +71,7 @@ Class User{
         ?>
 
         <div class="ui card" style = "width: 320px">
-            
+
             <div class="image">
 
                 <?if (!isset($Profile['avatar'])): ?><img src="/Public/Images/default.png"></img>
@@ -83,15 +83,15 @@ Class User{
             </div>
 
              <div class="content">
-            
+
                 <a class="header"><?=$Profile['firstname']?> <?=$Profile['lastname']?></a>
-          
+
                 <div class="meta">
                 <?=self::ClassShow($Profile['digit_class'])?> <?=$Profile['description']?>
                 </div>
 
             <div class="description"><?=$Profile['about']?></div>
-        
+
             </div>
 
             <div class="extra content" style="text-align: center">
@@ -154,20 +154,20 @@ Class User{
         </div>
 
             <div class="ui card" style = "width: 320px">
-             
+
                 <div class="content">
-            
+
                     <a class="header">Достижения <div class="ui teal left pointing label">0</div></a>
 
                 </div>
 
             </div>
 
-            
+
             <div class="ui card" style = "width: 320px">
-             
+
                 <div class="content">
-         
+
                     <a class="header">Любимые теги</a>
 
                 </div>
@@ -194,19 +194,19 @@ Class User{
 
         <div class="ui card" style = "display:inline-block; margin:25px;vertical-align:top;">
 
-            
+
             <div class="content">
-            
+
             <a class="header">Смена аватара</a>
-      
+
             <div class="meta">
-            
+
             </div>
 
             <div class="description">Боже, да Вы круты!</div>
-    
+
             </div>
-            
+
             <div class="image">
 
                 <?if (!isset($User['avatar'])): ?><img src="/Public/Images/default.png"></img>
@@ -223,7 +223,7 @@ Class User{
                 <div class="file_upload">
 
                     <form id = "SendAvatar" method = "Post" action="javascript:void(null);" onsubmit="SendAvatar()" enctype="multipart/form-data">
-                        
+
                         <input id = "avatar" name = "avatar" type="file"><br/><br/>
 
                         <button type = "submit" class = "fluid ui inverted blue button" name = "button">Сменить</button>
@@ -257,7 +257,7 @@ Class User{
                             });
 
                         }
-                        
+
                     </script>
 
                     <div id = "Result"></div>
@@ -269,6 +269,29 @@ Class User{
         </div>
 
 
+        <div class="ui card" style = "display:inline-block; margin:25px;vertical-align:top; width: 400px;">
+
+
+            <div class="content">
+                <a class="header">Адрес страницы</a>
+            <div class="meta">
+
+            </div>
+
+                <div class="description">Вы можете изменить короткий адрес Вашей страницы на более удобный и запоминающийся. Для этого введите имя страницы, состоящее из латинских букв, цифр или знаков «_».</div>
+
+            </div>
+
+
+
+                <div class="ui labeled input" style = "box-shadow: none !important; margin: auto; width: calc(100% - 40px);">
+                    <div class="ui label">https://forum.gogi1516.ru </div>
+                        <input type="text" name = "url">
+                    </div>
+
+
+        </div>
+
 
 
         <?
@@ -277,7 +300,7 @@ Class User{
     }
 
     public static function AddPost(array $Post, array $User, $Tags){
-        
+
         $id = DB_C::AddPost($Post);
 
         $TagsArr = explode(" ", Etc::OnlyDigitsAndSpaces($Tags));
@@ -287,12 +310,12 @@ Class User{
 
         DB_C::PostTags($id,$TagsArr,$User['id']);
 
-        
+
 
     }
 
     public static function GetStyleOfTagsUser($id){
-        
+
         $Tags = DB_C::GetTagsOfUser($id);
 
         foreach ($Tags as $Tag) {
@@ -340,7 +363,7 @@ Class Post{
 
 
         foreach ($Posts as $Post) {
-            
+
 
             $User = User::GetByID($Post['author']);
 
@@ -348,24 +371,24 @@ Class Post{
 
 
             <div class="post">
-        
+
             <div class="post_head">
 
                 <a href = "/User?id=<?=$User['id']?>" style = "background:
-                    
+
                     <?if (!isset($User['avatar'])): ?>url(Public/Images/default.png)
 
                 <?else:?>url(<?=$User['avatar']?>)
 
                 <?endif?>
-            
+
                 100% 100% no-repeat; background-size: cover;" class="ex_avatar"></a><a href = "/User?id=<?=$User['id']?>" class="author"><?=$User['firstname']?> <?=$User['lastname']?>
                 <p class="level"><?=User::ClassShow($User['digit_class'])?> <?=$User['description']?></p></a>
 
             </div>
 
             <div class="post_text">
-                
+
                 <p><?=$Post['text']?></p>
 
 
@@ -374,7 +397,7 @@ Class Post{
 
             <?Template::Divider()?>
 
-            
+
             <div class="post_bottom">
 
                 <?if ($is_logged == 1):?>
@@ -393,7 +416,7 @@ Class Post{
                 </div><button type="button" class="btn btn-link" onclick="location.href='/Post?id=<?=$Post['id']?>'">Комментарии</button>
 
                 <?endif?>
-            
+
             </div>
 
             <br/>
@@ -413,7 +436,7 @@ Class Post{
     }
 
     public static function GetStyleOfTags($postid){
-        
+
         $Tags = DB_C::GetTagsOfPost($postid);
 
         foreach ($Tags as $Tag) {
@@ -434,7 +457,7 @@ Class Post{
 
 
     public static function GetByID($id){
-        
+
         return DB_C::GetPostByID($id);
 
 
@@ -478,9 +501,9 @@ Class Post{
             </div>
 
         <?
-        
 
-    
+
+
 
     }
 
@@ -512,7 +535,7 @@ Class Post{
 
                 </div>
             </div>
-        
+
 
 
 
