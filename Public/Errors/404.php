@@ -8,7 +8,7 @@
   </head>
 
   <body>
-    <a style="position: absolute; left: 50%; top: 50%; margin: -265px -345px 0px; height: 530px; width: 690px;" href="/"></a>
+    <a style="position: absolute; left: calc(50% - 120px); top: calc(50% - 120px); width:240px; height: 240px; background:url(Public/Images/404.png) no-repeat 50% 50%;" href="/"></a>
   </body>
 
 </html>
