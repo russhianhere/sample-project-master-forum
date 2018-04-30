@@ -13,16 +13,16 @@ function Subscribe(id) {
 
     $.ajax({
 
-    
+
         type: 'POST',
-        
+
         url: 'Subscribe',
-        
+
         data: msg,
-    
+
     });
 
-        
+
 }
 
 function Unsubscribe(id) {
@@ -40,16 +40,16 @@ function Unsubscribe(id) {
 
     $.ajax({
 
-    
+
         type: 'POST',
-        
+
         url: 'Subscribe',
-        
+
         data: msg,
-    
+
     });
 
-        
+
 }
 
 
@@ -67,16 +67,16 @@ function Like(id,author) {
 
     $.ajax({
 
-    
+
         type: 'POST',
-        
+
         url: 'Rate',
-        
+
         data: msg,
-    
+
     });
 
-    
+
 }
 
 
@@ -94,16 +94,16 @@ function Unlike(id,author) {
 
     $.ajax({
 
-    
+
         type: 'POST',
-        
+
         url: 'Rate',
-        
+
         data: msg,
-    
+
     });
 
-    
+
 }
 
 
@@ -113,15 +113,15 @@ function Comment(id) {
 
     $.ajax({
 
-    
+
         type: 'POST',
-        
+
         url: 'Comment',
-        
+
         data: msg,
-    
+
     });
 
     location.reload();
-    
+
 }
